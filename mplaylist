@@ -19,7 +19,7 @@
 mplaylist is Python script which can play audio playlists (.m3u files),
 remembering the current playback position (file and time) even when killed,
 so it will resumes playback at the proper position upon restart. The playback
-position is saved as an .m3u.pos file next to the .mp3 file. mplaylist
+position is saved as an .m3u.pos file next to the .m3u file. mplaylist
 uses mplayer for playing the audio files.
 """
 
