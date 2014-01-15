@@ -1,26 +1,34 @@
-#! /usr/bin/python2.4
+#! /bin/sh
 # -*- mode: python; -*-
 # by pts@fazekas.hu at Sat Feb 26 22:39:44 CET 2011
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# TODO(pts): Properly resume TTY input after a SIGSTOP.
 
-"""mplaylist: Audio playlist player using mplayer.
+""":" #mplaylist: Audio playlist player using mplayer, with checkpointing
+
+type python2.7 >/dev/null 2>&1 && exec python2.7 -- "$0" ${1+"$@"}
+type python2.6 >/dev/null 2>&1 && exec python2.6 -- "$0" ${1+"$@"}
+type python2.5 >/dev/null 2>&1 && exec python2.5 -- "$0" ${1+"$@"}
+type python2.4 >/dev/null 2>&1 && exec python2.4 -- "$0" ${1+"$@"}
+exec python -- ${1+"$@"}; exit 1
 
 mplaylist is Python script which can play audio playlists (.m3u files),
 remembering the current playback position (file and time) even when killed,
 so it will resumes playback at the proper position upon restart. The playback
 position is saved as an .m3u.pos file next to the .m3u file. mplaylist
 uses mplayer for playing the audio files.
+
+Requirements: Python (2.4, 2.5, 2.6 or 2.7; doesn't work with 3.x) and mplayer.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+TODO(pts): Properly resume TTY input after a SIGSTOP.
 """
 
 import errno
