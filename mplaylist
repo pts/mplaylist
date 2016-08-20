@@ -12,7 +12,7 @@ exec python -- ${1+"$@"}; exit 1
 
 mplaylist is Python script which can play audio playlists (.m3u files),
 remembering the current playback position (file and time) even when killed,
-so it will resumes playback at the proper position upon restart. The playback
+so it will resume playback at the proper position upon restart. The playback
 position is saved as an .m3u.pos file next to the .m3u file. mplaylist
 uses mplayer for playing the audio files.
 
@@ -96,7 +96,10 @@ def Play(mediafns, posfn, media_prefix, seek_decisec, mplayer_flags):
   # We need an exec here to get rid of the shell, and to get a proper status
   # code.
   cmd = (
-      'exec mplayer -vc null -vo null -noautosub -af-add scaletempo %s%s -- %s'
+      'DISPLAY= '
+      'exec mplayer '
+      # '-vc null '  # Prevents decoding of .mp4 files. -vc black does work.
+      '-vo null -noautosub -af-add scaletempo %s%s -- %s'
       % (ss_flag, ' '.join(map(ShellQuote, mplayer_flags)),
          ' '.join(map(ShellQuote, mediafns))))
   print >>sys.stderr, 'info: running mplayer command: %s' % cmd
